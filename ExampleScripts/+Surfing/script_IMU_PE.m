@@ -8,18 +8,12 @@
 clear all;
 close all;
 
-
-% path2repo
-workDirectory = (what('BioMAC-Sim-Toolbox-Surfing').path); % If not already in the BioMAC-Sim-Toolbox folder
-% cd(workDirectory);
-% addpath(genpath('src'));
-% savepath;
 %% Settings
 % Get path of this script
 filePath = fileparts(mfilename('fullpath'));
 % Path to your repository
 path2repo = [filePath filesep '..' filesep '..' filesep];
-workDirectory = path2repo;
+
 
 % Specifiy participant numbers
 participants = [1:7];
@@ -51,7 +45,7 @@ if makeInitGuess == 1
 
         %InitGuess for the actual surfing simulation which excludes the contact
         % model and IMU tracking
-        Surfing.run_motion_IMU_Surf(workDirectory, iPar, camView, ...
+        Surfing.run_motion_IMU_Surf(path2repo, iPar, camView, ...
             WEffort, WTrans, WAcc, WGyro, WAngles, WReg, slope, doStanding, nNodes);
     end
 end
@@ -71,7 +65,7 @@ for iPar = participants
 
     % The actual surfing simulation which includes the contact
     % model and IMU tracking
-    Surfing.run_motion_IMU_Surf(workDirectory, iPar, camView, ...
+    Surfing.run_motion_IMU_Surf(path2repo, iPar, camView, ...
         WEffort, WTrans, WAcc, WGyro, WAngles, WReg, slope, doStanding, nNodes);
 end
 

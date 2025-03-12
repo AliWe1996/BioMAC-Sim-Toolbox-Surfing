@@ -31,7 +31,7 @@ close all
 % Flags
 doShowResults = 0;
 % number of max. iterations
-run_iter = 10;
+run_iter = 10000;
 
 % Fixed settings
 date                =  datetime('today');
@@ -91,7 +91,7 @@ if doStanding == 1
         % Change settings of the solver
         solver.setOptionField('tol', 0.001);
         solver.setOptionField('constr_viol_tol', 0.001);
-        solver.setOptionField('max_iter', 50);
+        solver.setOptionField('max_iter', 5000);
         
         % Solve the optimization problem
         resultStanding = solver.solve(problemStanding);
